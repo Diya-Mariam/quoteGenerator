@@ -38,8 +38,7 @@ function Bookmark() {
 
         <Navs/><br/><br/>
         <Cards quotes={quote} author={author}/><br/>
-        <Cards quotes={quote} author={author}/><br/>
-        <Cards quotes={quote} author={author}/><br/>
+        
       </div>
     );
 

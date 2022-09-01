@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Navs from "./Navs";
-import Card_home from "./card_home";
+import CardHome from "./CardHome";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import axios from "axios";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
+
 
 function Home() {
   const [quote, setQuote] = useState("");
@@ -16,11 +15,7 @@ function Home() {
     let arrayOfQuotes = [];
 
     try {
-      const data = await axios.get('https://api.quotable.io/random', {
-    params: {
-      tags: selectedTag
-    }
-  });
+      const data = await axios.get('https://api.quotable.io/random');
       arrayOfQuotes = data.data;
     } catch (error) {
       console.log(error);
@@ -62,7 +57,7 @@ function Home() {
       <Navs /> <br />
       <br />
       <br />
-      <Card_home quotes={quote} author={author} />
+      <CardHome quotes={quote} author={author} />
       <br />
       <br />
       <br />
