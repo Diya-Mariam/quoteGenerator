@@ -1,48 +1,56 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navs from "./Navs";
 import Cards from "./Cards";
 
 function Bookmark() {
 
-  const [quote, setQuote] = useState("");
-    const [author, setAuthor] = useState("");
+  const [quote, setQuote] = useState([]);
+  const [author, setAuthor] = useState([]);
+  const [id, setID] = useState([]);
 
-    const quoteAPI = async () => {
-      let arrayOfQuotes = [];
+  const quoteAPI = () => {
 
-      try{
-        const data = await axios.get("https://api.quotable.io/random");
-        arrayOfQuotes = data.data;
-        console.log(arrayOfQuotes);
-      }
-      catch(error){
-        console.log(error);
-      }
+    const quotesID = localStorage.getItem("quotesID")
 
-      try{
-        setQuote(arrayOfQuotes.content);
-        setAuthor(arrayOfQuotes.author);
-      }
-      catch(error){
-        console.log(error);
-      }
-    }
-    
-    useEffect(() => {
-      quoteAPI()
-    }, [])
+    Array.prototype.forEach.call(quotesID,(id) => {
+      console.log(id)
 
-    return (
-      <div  className="body1">
+      axios
+        .get(`https://api.quotable.io/quotes/${id}`)
+        .then((res) => {
+          const data = {
+            quote: res.data.content,
+            author: res.data.author,
+            id: res.data._id
+          }
+          setQuote((prev) => [...prev, data.quote])
+          setAuthor((prev) => [...prev, data.author])
+          setID((prev) => [...prev, data.id])
 
-        <Navs/><br/><br/>
-        <Cards quotes={quote} author={author}/><br/>
-        
-      </div>
-    );
+        })
 
+        .catch((err) => {
+          console.log(err);
+        })
+    })
   }
+
+  useEffect(() => {
+    quoteAPI()
+  }, [])
+
+  return (
+    <div className="body1">
+
+      <Navs /><br /><br />
+      <Cards quote={quote} author= {author} id= {id}/>
+      <br />
+
+    </div>
+  );
+
+}
 
 
 export default Bookmark;

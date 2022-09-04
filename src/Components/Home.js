@@ -9,6 +9,7 @@ import axios from "axios";
 function Home() {
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
+  const [id, setID] = useState("");
   const [dropdownOptions, setDropdownOptions] = useState([]);
 
   const quoteAPI = async (selectedTag = "") => {
@@ -24,6 +25,7 @@ function Home() {
     try {
       setQuote(arrayOfQuotes.content);
       setAuthor(arrayOfQuotes.author);
+      setID(arrayOfQuotes._id);
     } catch (error) {
       console.log(error);
     }
@@ -31,7 +33,7 @@ function Home() {
 
   const dropdownAPI = () => {
     var options = []
-    axios.get("https://api.quotable.io/tags").then(res => {
+     axios.get("https://api.quotable.io/tags").then(res => {
         res.data.forEach(tag => {
           if (tag.quoteCount > 0) {
             options.push(tag.name);
@@ -57,7 +59,7 @@ function Home() {
       <Navs /> <br />
       <br />
       <br />
-      <CardHome quotes={quote} author={author} />
+      <CardHome quotes={quote} author={author} id={id}/>
       <br />
       <br />
       <br />

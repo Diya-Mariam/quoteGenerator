@@ -14,7 +14,7 @@ function Cards(props) {
             <blockquote className="blockquote mb-0">
               <p>
                 {" "}
-                {props.quotes}{" "}
+                {props.quote}{" "}
               </p><br/>
               
               <footer className="blockquote-footer" style={{color: "white"}}>
