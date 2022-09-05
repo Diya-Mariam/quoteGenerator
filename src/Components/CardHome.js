@@ -22,7 +22,7 @@ function Card_home(props) {
   return (
     <div>
       <Card
-        className="mx-auto bg-danger "
+        className="mx-auto bg-danger list"
         style={{ width: "500px", color: "white" }}
       >
         <Card.Body>
