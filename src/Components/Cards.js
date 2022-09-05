@@ -8,7 +8,7 @@ function Cards(props) {
 
     return (
       <div>
-        <Card className="mx-auto bg-danger list" style={{width: "500px", color: "white"}}>
+        <Card className="mx-auto bg-danger list" style={{ color: "white"}}>
           
           <Card.Body>
             <blockquote className="blockquote mb-0">
