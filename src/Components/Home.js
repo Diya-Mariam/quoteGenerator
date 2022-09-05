@@ -63,7 +63,7 @@ function Home() {
       <br />
       <br />
       <br />
-      <Form.Select aria-label="Default select example" className="mx-auto" style= {{width : "20rem"}} onChange={handleOptionChange}>
+      <Form.Select aria-label="Default select example" className="mx-auto dropdown"  onChange={handleOptionChange}>
         <option>Open this select menu</option>
         {dropdownOptions.map(tag => {return(<option key={tag} value={tag}>{tag}</option>)})}
       </Form.Select>

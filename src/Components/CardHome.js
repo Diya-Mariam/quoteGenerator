@@ -23,7 +23,7 @@ function Card_home(props) {
     <div>
       <Card
         className="mx-auto bg-danger list"
-        style={{ width: "500px", color: "white" }}
+        style={{  color: "white" }}
       >
         <Card.Body>
           <blockquote className="blockquote mb-0">
